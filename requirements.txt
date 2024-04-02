@@ -1,0 +1,5 @@
+#pip install -r requirements.txt
+albumentations==0.3.2
+scikit-learn
+seaborn
+pytorch-lightning==1.1.0
