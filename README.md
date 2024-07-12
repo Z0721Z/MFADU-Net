@@ -1,4 +1,4 @@
-# MFADU-Net: An Enhanced DoubleU-Net with Multi-Level Feature Fusion and Atrous Decoder for Medical Image Segmentation
+# MFADU-Net
 
 ## Requirements
 1. pytorch==1.10.0
