@@ -29,7 +29,7 @@ def pre_csv(data_path, frac, filename):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--filename', type=str, default='CVC', help='the path of dataset')
-    parser.add_argument('--dataset', type=str, default='/home/cv/桌面/zyp/dataset/CVC-ClinicDB/TIF/images',
+    parser.add_argument('--dataset', type=str, default='dataset/CVC-ClinicDB/TIF/images',
                         help='training/images')  # issue 16
     parser.add_argument('--size', type=float, default=0.8, help='the size of your train set')
     args = parser.parse_args()
