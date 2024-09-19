@@ -128,15 +128,14 @@ class SpatialAttention(nn.Module):
         self.sigmoid = nn.Sigmoid()
 
     def forward(self, x):
-        # 计算输入张量的平均值和最大值，并将它们连接在一起
         avg_pool = torch.mean(x, dim=1, keepdim=True)
         max_pool, _ = torch.max(x, dim=1, keepdim=True)
         pool = torch.cat([avg_pool, max_pool], dim=1)
-        # 通过卷积层获取空间注意力权重
+
         weights = self.conv1(pool)
-        # 使用Sigmoid激活函数将权重缩放到0到1之间
+
         weights = self.sigmoid(weights)
-        # 将权重应用到输入张量上
+
         out = x * weights
         return out
 
@@ -150,12 +149,11 @@ class DilatedConvolutionBlock(nn.Module):
         self.activation = nn.ReLU()
 
     def forward(self, x):
-        # 动态调整 dilation 参数
+
         dilation_rate = round(self.dilation_change.item())
-        # 更新卷积层的 dilation 参数
+
         self.conv.dilation = dilation_rate
         self.conv.padding = dilation_rate
-        # 计算卷积结果
         x = self.conv(x)
         x = self.activation(x)
         return x
