@@ -27,7 +27,7 @@ from my_nets import RD_Unet, CD_Unet, RD_Unet_mulitfusion
 def get_train_transform():
     return A.Compose(
         [
-            A.Resize(128, 128),
+            A.Resize(224, 224),
             A.HorizontalFlip(p=0.25),
             A.ShiftScaleRotate(shift_limit=0, p=0.25),
             A.CoarseDropout(),
@@ -40,7 +40,7 @@ def get_train_transform():
 def get_valid_transform():
     return A.Compose(
         [
-            A.Resize(128, 128),
+            A.Resize(224, 224),
             A.Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225)),
             ToTensor(),
         ])
@@ -138,7 +138,7 @@ if __name__ == '__main__':
     #parser.add_argument('--model_name', type=str, default='doubleUnet', help='model-name')
     #parser.add_argument('--model_name', type=str, default='Unet', help='model-name')
     parser.add_argument('--model_name', type=str, default='my_unet', help='model-name')
-    parser.add_argument('--dataset', type=str, default='/home/cv/桌面/zyp/dataset/CVC-ClinicDB/TIF/', help='data path')
+    parser.add_argument('--dataset', type=str, default='data', help='data path')
     # parser.add_argument('--dataset', type=str, default='./data/DRIVE', help='data path')
     parser.add_argument('--csvfile', type=str,
                         default='src/CVC/test_train_data.csv',
